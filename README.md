@@ -1,60 +1,89 @@
-# CodeIgniter 4 Framework
+# CodeIgniter Authentication System
+#admin password-> admin123
+## Project Overview
+This is a **User Role-Based Authentication System** built using **CodeIgniter 4**. It includes Admin and User roles with a session-based login system.
 
-## What is CodeIgniter?
+## Features
+- **User Authentication** (Login, Register, Logout)
+- **Role-Based Access Control (RBAC)**
+- **Admin Dashboard** (User Management, Last Login Details)
+- **User Dashboard** (Profile, Last Login)
+- **Session-Based Authentication** (No API Key Required)
+- **Fully Functional UI** with Bootstrap
+- **Database Integration with MySQL**
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Folder Structure
+```
+app/
+ ├── Controllers/
+ │   ├── AuthController.php
+ │   ├── DashboardController.php
+ ├── Models/
+ │   ├── UserModel.php
+ ├── Views/
+ │   ├── auth/
+ │   │   ├── login.php
+ │   │   ├── register.php
+ │   ├── admin/
+ │   │   ├── dashboard.php
+ │   ├── user/
+ │   │   ├── dashboard.php
+ │   ├── layouts/
+ │   │   ├── header.php
+ │   │   ├── footer.php
+ │   │   ├── navbar.php
+ │   │   ├── sidebar.php
+ ├── Config/
+ │   ├── Routes.php
+ ├── Database/
+ │   ├── Migrations/
+ │   ├── Seeds/
+```
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/vikashsharma4141/codeigniterAuth.git
+   ```
+2. Move to the project folder:
+   ```sh
+   cd Authproject
+   ```
+3. Install dependencies:
+   ```sh
+   composer install
+   ```
+4. Configure `.env` file:
+   ```sh
+   cp env .env
+   php spark key:generate
+   ```
+5. Set up the database:
+   - Create a database `authdb`
+   - Import the SQL file `database/authdb.sql`
+6. Run the application:
+   ```sh
+   php spark serve
+   ```
+7. Open in browser:
+   ```sh
+   http://localhost:8080
+   ```
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Usage
+- **Admin Login:** `admin@example.com` / `admin123`
+- **User Login:** Register a new user via the signup page.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
-
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## API Routes
+| Method | Route | Description |
+|--------|--------|-------------|
+| POST | `/login` | User Login |
+| POST | `/register` | User Registration |
+| GET | `/dashboard` | Dashboard View |
+| GET | `/logout` | Logout |
 
 ## Contributing
+Feel free to open issues or pull requests to improve this project.
 
-We welcome contributions from the community.
-
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
-
-## Server Requirements
-
-PHP version 8.1 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+## License
+This project is open-source and available under the MIT License.
